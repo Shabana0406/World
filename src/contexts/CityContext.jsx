@@ -116,7 +116,7 @@ function CityProvider({ children }) {
     dispatch({ type: "loading" });
 
     try {
-      const res = await fetch(`${Base_URL}`, {
+      const res = await fetch(`${Base_URL}/`, {
         method: "POST",
         body: JSON.stringify(newCity),
         headers: {
