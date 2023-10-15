@@ -6,7 +6,6 @@ import {
   useReducer,
 } from "react";
 
-const Base_URL = "https://shabana0406.github.io/city_data/city_data.json";
 
 const CityContext = createContext();
 
@@ -77,7 +76,7 @@ function CityProvider({ children }) {
     async function fetchCities() {
       dispatch({ type: "loading" });
       try {
-        const res = await fetch(`${Base_URL}/`);
+        const res = await fetch(`/api/cities`);
         const data = await res.json();
         dispatch({ type: "cities/loaded", payload: data });
       } catch {
@@ -99,7 +98,7 @@ function CityProvider({ children }) {
       dispatch({ type: "loading" });
 
       try {
-        const res = await fetch(`${Base_URL}/${id}`);
+        const res = await fetch(`/api/cities/${id}`);
         const data = await res.json();
         dispatch({ type: "city/current", payload: data });
       } catch {
@@ -116,7 +115,7 @@ function CityProvider({ children }) {
     dispatch({ type: "loading" });
 
     try {
-      const res = await fetch(`${Base_URL}/`, {
+      const res = await fetch('/api/cities/', {
         method: "POST",
         body: JSON.stringify(newCity),
         headers: {
@@ -138,7 +137,7 @@ function CityProvider({ children }) {
     dispatch({ type: "loading" });
 
     try {
-      const res = await fetch(`${Base_URL}/${id}`, {
+      const res = await fetch(`/api/cities/${id}`, {
         method: "DELETE",
       });
       await res.json();
