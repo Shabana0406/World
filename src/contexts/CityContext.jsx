@@ -76,7 +76,7 @@ function CityProvider({ children }) {
     async function fetchCities() {
       dispatch({ type: "loading" });
       try {
-        const res = await fetch(`/api/cities`);
+        const res = await fetch('/api/');
         const data = await res.json();
         dispatch({ type: "cities/loaded", payload: data });
       } catch {
@@ -98,7 +98,7 @@ function CityProvider({ children }) {
       dispatch({ type: "loading" });
 
       try {
-        const res = await fetch(`/api/cities/${id}`);
+        const res = await fetch(`/api/${id}`);
         const data = await res.json();
         dispatch({ type: "city/current", payload: data });
       } catch {
@@ -115,7 +115,7 @@ function CityProvider({ children }) {
     dispatch({ type: "loading" });
 
     try {
-      const res = await fetch('/api/cities/', {
+      const res = await fetch('/api/', {
         method: "POST",
         body: JSON.stringify(newCity),
         headers: {
@@ -137,7 +137,7 @@ function CityProvider({ children }) {
     dispatch({ type: "loading" });
 
     try {
-      const res = await fetch(`/api/cities/${id}`, {
+      const res = await fetch(`/api/${id}`, {
         method: "DELETE",
       });
       await res.json();
